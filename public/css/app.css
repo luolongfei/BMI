@@ -1,0 +1,14 @@
+.red-heart {
+    color: #f38270;
+    font-size: 22px;
+}
+
+/*
+body {
+    font-size: 14px;
+}*/
+
+.custom-badge {
+    font-size: 24px;
+    font-weight: 700;
+}
