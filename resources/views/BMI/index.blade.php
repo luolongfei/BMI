@@ -1,10 +1,21 @@
 @extends('layouts.base')
 
 @section('content')
-    <div class="container text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-6 d-flex justify-content-start">
+                <img src="/images/girl_22.png" class="rounded girl girl-22" alt="22">
+            </div>
+            <div class="col-6 d-flex justify-content-end">
+                <img src="/images/girl_33.png" class="rounded girl girl-33" alt="33">
+            </div>
+        </div>
+    </div>
+
+    {{--<div class="container text-center">
         <img src="https://q2.qlogo.cn/headimg_dl?dst_uin=593198779&spec=100" alt="查价喵" class="rounded-circle mt-5"
              id="qq-avatar">
-    </div>
+    </div>--}}
     <div class="container">
         <!-- 提示 -->
         <div class="alert alert-warning alert-dismissible fade show mt-4" role="alert">
@@ -16,7 +27,7 @@
         </div>
         <!-- end 提示 -->
 
-        <label for="h" class="mt-2">
+        <label for="h" class="mt-3">
             <span class="badge badge-primary">性别</span>
         </label>
         <div class="input-group">
@@ -90,6 +101,18 @@
             let w = $('#w');
             let clear = $('.clear');
             let loader = $('#loader');
+
+            let girl22 = $('.girl-22');
+            let girl33 = $('.girl-33');
+
+            w.focus(function () {
+                girl22.attr('src', '/images/girl_22_hide.png');
+                girl33.attr('src', '/images/girl_33_hide.png');
+            });
+            w.blur(function () {
+                girl22.attr('src', '/images/girl_22.png');
+                girl33.attr('src', '/images/girl_33.png');
+            });
 
             $('#calcBmi').click(function () {
                 let hVal = h.val().replace(/\s/g, ''); // 去除空白字符
