@@ -1,7 +1,7 @@
 @extends('layouts.base')
 
 @section('content')
-    <div class="container fixed-top bg-white">
+    <div class="container fixed-top bg-white" id="girl-box">
         <div class="row">
             <div class="col-6 d-flex justify-content-start">
                 <img src="/images/girl_22.png" class="rounded girl girl-22" alt="22">
@@ -115,13 +115,18 @@
             let loader = $('#loader');
             let x = $('#x');
             let setAvatar = $('#setAvatar');
+            let girlBox = $('#girl-box');
 
             let girl22 = $('.girl-22');
             let girl33 = $('.girl-33');
 
+            h.focus(function () {
+                girlBox.removeClass('fixed-top').addClass('fixed-bottom');
+            });
             w.focus(function () {
                 girl22.attr('src', '/images/girl_22_hide.png');
                 girl33.attr('src', '/images/girl_33_hide.png');
+                girlBox.removeClass('fixed-top').addClass('fixed-bottom');
             });
             w.blur(function () {
                 girl22.attr('src', '/images/girl_22.png');
@@ -180,6 +185,9 @@
             });
 
             $('#calcBmi').click(function () {
+
+                girlBox.removeClass('fixed-bottom').addClass('fixed-top');
+
                 let hVal = h.val().replace(/\s/g, ''); // 去除空白字符
                 let wVal = w.val().replace(/\s/g, '');
                 if (hVal.length === 0) {
