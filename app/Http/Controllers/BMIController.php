@@ -23,6 +23,14 @@ class BMIController extends Controller
         $sex = $request->post('sex');
         $height = $request->post('height');
         $weight = $request->post('weight');
+        $qq = $request->post('qq', '');
+        $clientIp = isset($_SERVER['HTTP_CF_CONNECTING_IP']) ? $_SERVER['HTTP_CF_CONNECTING_IP'] : $request->getClientIp();
+        Log::info(sprintf('[ip] %s [request] ', $clientIp), [
+            'sex' => $sex === '0' ? '女' : ($sex === '1' ? '男' : '保密'),
+            'height' => $height,
+            'weight' => $weight,
+            'qq' => $qq
+        ]);
 
         if (!is_numeric($sex)) {
             Log::error('sex参数非法：' . $sex);
@@ -120,7 +128,7 @@ class BMIController extends Controller
             'imgURL' => $imgURL,
             'systemDate' => date('Y-m-d H:i:s')
         ];
-        Log::info(sprintf('IP: %s 返回结果：', $request->getClientIp()), $rt);
+        Log::info(sprintf('[ip] %s [response] ', $clientIp), $rt);
 
         return response()->json($rt);
     }

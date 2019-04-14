@@ -13,6 +13,7 @@
     <title>BMI测试 | 计算身体质量指数</title>
     <meta name="description" content="计算身体质量指数">
     <meta name="keywords" content="BMI">
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
     <!-- common css -->
     <link href="/bootstrap4/bootstrap.min.css" rel="stylesheet">
     <link href="/ionicons/css/ionicons.min.css" rel="stylesheet">

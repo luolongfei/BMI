@@ -74,11 +74,23 @@
 
         <button type="button" class="btn btn-outline-primary btn-block mt-2" role="button" id="calcBmi">开始计算</button>
         <!-- end 提交 -->
+    </div>
 
-        <button class="btn-sm btn btn-primary mt-4" type="button" data-toggle="collapse" data-target="#coll-principle"
-                aria-expanded="false" aria-controls="coll-principle">
-            原理是什么
-        </button>
+    <div class="container">
+        <div class="pt-5">
+            <span class="badge badge-pill badge-secondary">工具</span>
+        </div>
+        <div class="mt-2">
+            <button class="btn-sm btn btn-primary" type="button" data-toggle="collapse"
+                    data-target="#coll-principle"
+                    aria-expanded="false" aria-controls="coll-principle">
+                原理是什么
+            </button>
+            <button type="button" class="btn-sm btn btn-outline-danger ml-2" id="x">艺术家题字
+            </button>
+            <button type="button" class="btn-sm btn btn-primary ml-2" id="setAvatar">自定义QQ头像
+            </button>
+        </div>
         <div class="row">
             <div class="collapse" id="coll-principle">
                 <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
@@ -101,6 +113,8 @@
             let w = $('#w');
             let clear = $('.clear');
             let loader = $('#loader');
+            let x = $('#x');
+            let setAvatar = $('#setAvatar');
 
             let girl22 = $('.girl-22');
             let girl33 = $('.girl-33');
@@ -112,6 +126,52 @@
             w.blur(function () {
                 girl22.attr('src', '/images/girl_22.png');
                 girl33.attr('src', '/images/girl_33.png');
+            });
+
+            x.click(function () {
+                swal({
+                    title: '著名艺术家Lisa题字',
+                    text: '我觉得很好看，你觉得呢',
+                    icon: 'https://ws1.sinaimg.cn/large/a4d9cbc6gy1g21z9v35vyj20mp0ah4qp.jpg',
+                    button: '你说的对',
+                    closeOnClickOutside: false,
+                })
+            });
+
+            setAvatar.click(function () {
+                swal({
+                    text: '在下方输入QQ号，检测结果画面的头像将使用你的QQ头像',
+                    content: {
+                        element: 'input',
+                        attributes: {
+                            placeholder: localdb.get('qq') ? localdb.get('qq') : 'QQ',
+                            type: 'text',
+                        }
+                    },
+                    buttons: {
+                        cancel: '算了',
+                        confirm: {
+                            text: '写好了',
+                            visible: true,
+                            closeModal: false // 不关闭模态框
+                        }
+                    },
+                    closeOnClickOutside: false,
+                }).then((value) => {
+                    if (value) {
+                        let qq = `${value}`;
+                        localdb.set('qq', qq);
+
+                        swal.stopLoading();
+                        swal.close();
+                        swal({
+                            icon: getQqAvatar(),
+                            text: '设置成功',
+                            buttons: false,
+                            timer: 2000,
+                        });
+                    }
+                });
             });
 
             $('#calcBmi').click(function () {
@@ -141,7 +201,8 @@
                 let data = {
                     sex: $("input[name='sex']:checked").val(),
                     height: hVal,
-                    weight: wVal
+                    weight: wVal,
+                    qq: localdb.get('qq') ? localdb.get('qq') : ''
                 };
                 $.ajax({
                     url: '/api/bmi/calcBmi',
@@ -154,9 +215,10 @@
                         thisObj.prop({disabled: false});
                         thisObj.html('开始计算');
                         if (rt.code === 0) {
+                            let qqAvatarURL = getQqAvatar();
                             let content = document.createElement('div'); // js中创建的dom不会自动追加到文档中，不必担心影响样式。能取到dom值。
                             content.innerHTML = '<div class="container text-center">' +
-                                '        <img src="' + (rt.imgURL !== '' ? rt.imgURL : 'https://q2.qlogo.cn/headimg_dl?dst_uin=1435760195&spec=100') + '" alt="大头贴" class="rounded-circle mt-2">' +
+                                '        <img src="' + (rt.imgURL !== '' ? rt.imgURL : qqAvatarURL) + '" alt="大头贴" class="rounded-circle mt-2">' +
                                 '        <div class="row d-flex justify-content-center mt-4">' +
                                 '            <div class="col-6 d-flex justify-content-end"><span class="mr-2 pt-2">检测结果</span></div>' +
                                 '            <div class="col-6 d-flex justify-content-start">' + rt.bmi + '</div>' +
@@ -200,6 +262,12 @@
                     }
                 });
             });
+
+            function getQqAvatar() {
+                let qq = localdb.get('qq') && /^\d{5,}$/.test(localdb.get('qq')) ? localdb.get('qq') : '1435760195';
+
+                return 'https://q2.qlogo.cn/headimg_dl?dst_uin=' + qq + '&spec=100';
+            }
 
             clear.click(function () {
                 let input = $(this).parent().siblings('input');
