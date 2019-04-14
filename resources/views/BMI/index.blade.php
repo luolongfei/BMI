@@ -251,6 +251,8 @@
                         loader.is(':hidden') ? loader.slideDown('normal') : loader.slideUp('normal');
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
+                        thisObj.prop({disabled: false});
+                        thisObj.html('开始计算');
                         if (textStatus === 'timeout') {
                             swal({
                                 text: '服务器没有鸟你，别气馁，再点一下试试',
