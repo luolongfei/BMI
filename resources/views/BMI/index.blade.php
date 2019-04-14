@@ -1,7 +1,7 @@
 @extends('layouts.base')
 
 @section('content')
-    <div class="container">
+    <div class="container fixed-top bg-white">
         <div class="row">
             <div class="col-6 d-flex justify-content-start">
                 <img src="/images/girl_22.png" class="rounded girl girl-22" alt="22">
@@ -16,7 +16,7 @@
         <img src="https://q2.qlogo.cn/headimg_dl?dst_uin=593198779&spec=100" alt="查价喵" class="rounded-circle mt-5"
              id="qq-avatar">
     </div>--}}
-    <div class="container">
+    <div class="container" style="margin-top: 92px;">
         <!-- 提示 -->
         <div class="alert alert-warning alert-dismissible fade show mt-4" role="alert">
             <i class="icon ion-md-information-circle-outline mr-2"></i>
@@ -169,6 +169,11 @@
                             text: '设置成功',
                             buttons: false,
                             timer: 2000,
+                        });
+                    } else {
+                        swal({
+                            text: '你没有输入任何内容',
+                            button: '哦',
                         });
                     }
                 });
