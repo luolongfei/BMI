@@ -82,7 +82,7 @@ class BMIController extends Controller
 
         /**
          * 體重過輕：BMI < 18.5
-         * 健康體位：18.5 <= BMI<24
+         * 健康體位：18.5 <= BMI < 24
          * 過重：24 <= BMI < 27
          * 輕度肥胖：27 <= BMI < 30
          * 中度肥胖：30 <= BMI < 35

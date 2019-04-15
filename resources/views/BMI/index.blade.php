@@ -1,5 +1,14 @@
 @extends('layouts.base')
 
+@push ('css')
+    <style>
+        .tbFont {
+            color: #fff;
+            font-weight: 600;
+        }
+    </style>
+@endpush
+
 @section('content')
     <div class="container fixed-top bg-white">
         <div class="row">
@@ -78,17 +87,48 @@
 
     <div class="container">
         <div class="pt-5">
-            <span class="badge badge-pill badge-secondary">工具</span>
+            <span class="badge badge-pill badge-secondary">规则说明</span>
         </div>
+        <table class="table table-hover mt-2">
+            <thead>
+            <tr>
+                <th scope="col">分类</th>
+                <th scope="col">BMI范围</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr style="background-color: #999999;" class="tbFont">
+                <td>过轻</td>
+                <td>BMI < 18.5</td>
+            </tr>
+            <tr style="background-color: #99CC33;" class="tbFont">
+                <td>标准身材</td>
+                <td>18.5 <= BMI < 24</td>
+            </tr>
+            <tr style="background-color: #FFCC00;" class="tbFont">
+                <td>过重</td>
+                <td>24 <= BMI < 27</td>
+            </tr>
+            <tr style="background-color: #FF9900;" class="tbFont">
+                <td>轻度肥胖</td>
+                <td>27 <= BMI < 30</td>
+            </tr>
+            <tr style="background-color: #990033;" class="tbFont">
+                <td>中度肥胖</td>
+                <td>30 <= BMI < 35</td>
+            </tr>
+            <tr style="background-color: #f83823;" class="tbFont">
+                <td>重度肥胖</td>
+                <td>BMI >= 35</td>
+            </tr>
+            </tbody>
+        </table>
+
         <div class="mt-2">
             <button class="btn-sm btn btn-primary" type="button" data-toggle="collapse"
                     data-target="#coll-principle"
                     aria-expanded="false" aria-controls="coll-principle">
                 原理是什么
-            </button>
-            <button type="button" class="btn-sm btn btn-outline-danger ml-2" id="x">艺术家题字
-            </button>
-            <button type="button" class="btn-sm btn btn-primary ml-2" id="setAvatar">自定义QQ头像
             </button>
         </div>
         <div class="row">
@@ -101,6 +141,16 @@
                     则会有营养不良、骨质疏松、猝死等健康问题。
                 </div>
             </div>
+        </div>
+
+        <div class="pt-2 mt-4">
+            <span class="badge badge-pill badge-secondary">工具</span>
+        </div>
+        <div class="mt-2">
+            <button type="button" class="btn-sm btn btn-primary" id="setAvatar">自定义QQ头像
+            </button>
+            <button type="button" class="btn-sm btn btn-outline-danger ml-2" id="x">可爱的艺术家
+            </button>
         </div>
     </div>
 @endsection
