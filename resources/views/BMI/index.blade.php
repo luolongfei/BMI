@@ -2,7 +2,7 @@
 
 @push ('css')
     <style>
-        .tbFont {
+        .bmi-tr {
             color: #fff;
             font-weight: 600;
         }
@@ -97,27 +97,27 @@
             </tr>
             </thead>
             <tbody>
-            <tr style="background-color: #999999;" class="tbFont">
+            <tr style="background-color: #999999;" class="bmi-tr">
                 <td>过轻</td>
                 <td>BMI < 18.5</td>
             </tr>
-            <tr style="background-color: #99CC33;" class="tbFont">
+            <tr style="background-color: #99CC33;" class="bmi-tr">
                 <td>标准身材</td>
                 <td>18.5 <= BMI < 24</td>
             </tr>
-            <tr style="background-color: #FFCC00;" class="tbFont">
+            <tr style="background-color: #FFCC00;" class="bmi-tr">
                 <td>过重</td>
                 <td>24 <= BMI < 27</td>
             </tr>
-            <tr style="background-color: #FF9900;" class="tbFont">
+            <tr style="background-color: #FF9900;" class="bmi-tr">
                 <td>轻度肥胖</td>
                 <td>27 <= BMI < 30</td>
             </tr>
-            <tr style="background-color: #990033;" class="tbFont">
+            <tr style="background-color: #990033;" class="bmi-tr">
                 <td>中度肥胖</td>
                 <td>30 <= BMI < 35</td>
             </tr>
-            <tr style="background-color: #f83823;" class="tbFont">
+            <tr style="background-color: #f83823;" class="bmi-tr">
                 <td>重度肥胖</td>
                 <td>BMI >= 35</td>
             </tr>
@@ -147,9 +147,7 @@
             <span class="badge badge-pill badge-secondary">工具</span>
         </div>
         <div class="mt-2">
-            <button type="button" class="btn-sm btn btn-primary" id="setAvatar">自定义QQ头像
-            </button>
-            <button type="button" class="btn-sm btn btn-outline-danger ml-2" id="x">可爱的艺术家
+            <button type="button" class="btn-sm btn btn-primary" id="setAvatar">设置头像
             </button>
         </div>
     </div>
@@ -163,7 +161,6 @@
             let w = $('#w');
             let clear = $('.clear');
             let loader = $('#loader');
-            let x = $('#x');
             let setAvatar = $('#setAvatar');
 
             let girl22 = $('.girl-22');
@@ -176,16 +173,6 @@
             w.blur(function () {
                 girl22.attr('src', '/images/girl_22.png');
                 girl33.attr('src', '/images/girl_33.png');
-            });
-
-            x.click(function () {
-                swal({
-                    title: '著名艺术家Lisa题字',
-                    text: '我觉得很好看，你觉得呢',
-                    icon: 'https://ws1.sinaimg.cn/large/a4d9cbc6gy1g21z9v35vyj20mp0ah4qp.jpg',
-                    button: '你说的对',
-                    closeOnClickOutside: false,
-                })
             });
 
             setAvatar.click(function () {
@@ -282,7 +269,11 @@
                                 '            <div class="col-6 d-flex justify-content-end"><span class="mr-2 pt-2">你的BMI</span></div>' +
                                 '            <div class="col-6 d-flex justify-content-start">' + rt.bmiVal + '</div>' +
                                 '        </div>' +
-                                '        <div class="alert alert-warning mt-5" role="alert">' + rt.tips +
+                                '        <div class="row d-flex justify-content-center mt-2">' +
+                                '            <div class="col-6 d-flex justify-content-end"><span class="mr-2 pt-2">所处范围</span></div>' +
+                                '            <div class="col-6 d-flex justify-content-start">' + rt.range + '</div>' +
+                                '        </div>' +
+                                '        <div class="alert alert-warning mt-3" role="alert">' + rt.tips +
                                 '        </div>' +
                                 '    </div>';
 
@@ -321,7 +312,7 @@
             });
 
             function getQqAvatar() {
-                let qq = localdb.get('qq') && /^\d{5,}$/.test(localdb.get('qq')) ? localdb.get('qq') : '1435760195';
+                let qq = localdb.get('qq') && /^\d{5,}$/.test(localdb.get('qq')) ? localdb.get('qq') : '593198779';
 
                 return 'https://q2.qlogo.cn/headimg_dl?dst_uin=' + qq + '&spec=100';
             }

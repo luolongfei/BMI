@@ -93,31 +93,38 @@ class BMIController extends Controller
         $tips = '';
         $imgURL = '';
         $sexName = $sex === '0' ? '小姑娘' : '小伙子';
+        $range = '';
         if ($bmiVal < 18.5) {
             $color = '#999999';
             $bmi = '过轻';
             $tips = '你需要长胖';
+            $range = 'BMI < 18.5';
         } else if ($bmiVal >= 18.5 && $bmiVal < 24) {
             $color = '#99CC33';
             $bmi = '标准身材';
             $tips = '恭喜，我从未见过身材如此标准的人';
+            $range = '18.5 <= BMI < 24';
         } else if ($bmiVal >= 24 && $bmiVal < 27) {
             $color = '#FFCC00';
             $bmi = '过重';
             $tips = $sexName . '，你该减肥了，虽然你可能觉得你体重还有上升空间，只要你跑得足够快，脂肪就追不上你';
+            $range = '24 <= BMI < 27';
         } else if ($bmiVal >= 27 && $bmiVal < 30) {
             $color = '#FF9900';
             $bmi = '轻度肥胖';
             $tips = $sexName . '，你该减肥了';
+            $range = '27 <= BMI < 30';
         } else if ($bmiVal >= 30 && $bmiVal < 35) {
             $color = '#990033';
             $bmi = '中度肥胖';
             $tips = $sexName . '，你该减肥了';
+            $range = '30 <= BMI < 35';
         } else if ($bmiVal >= 35) {
             $color = '#f83823';
             $bmi = '重度肥胖';
             $tips = '我从未见过如此胖重之人，长肥秘诀分享一下如何';
             $imgURL = 'https://ws1.sinaimg.cn/large/a4d9cbc6gy1g215he31kyj208z07xk14.jpg';
+            $range = 'BMI >= 35';
         }
 
         $rt = [
@@ -126,6 +133,7 @@ class BMIController extends Controller
             'tips' => $tips,
             'bmiVal' => sprintf('<span class="custom-badge" style="color: %s">%s</span>', $color, $bmiVal),
             'imgURL' => $imgURL,
+            'range' => sprintf('<span class="custom-badge" style="color: %s">%s</span>', $color, $range),
             'systemDate' => date('Y-m-d H:i:s')
         ];
         Log::info(sprintf('[ip] %s [response] ', $clientIp), $rt);
