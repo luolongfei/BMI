@@ -26,34 +26,6 @@
              id="qq-avatar">
     </div>--}}
     <div class="container" style="margin-top: 92px;">
-        <!-- 提示 -->
-        <div class="alert alert-warning alert-dismissible fade show mt-4" role="alert">
-            <i class="icon ion-md-information-circle-outline mr-2"></i>
-            输入身高与体重，点击<strong>开始计算</strong>即可计算身体质量指数，请放心，应该没我胖。
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <!-- end 提示 -->
-
-        <label for="h" class="mt-3">
-            <span class="badge badge-primary">性别</span>
-        </label>
-        <div class="input-group">
-            <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" id="sex1" name="sex" class="custom-control-input" value="1">
-                <label class="custom-control-label" for="sex1">男</label>
-            </div>
-            <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" id="sex2" name="sex" class="custom-control-input" value="0">
-                <label class="custom-control-label" for="sex2">女</label>
-            </div>
-            <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" id="sex3" name="sex" class="custom-control-input" value="2">
-                <label class="custom-control-label" for="sex3">保密</label>
-            </div>
-        </div>
-
         <label for="h" class="mt-2">
             <span class="badge badge-primary">身高</span><span class="badge badge-pill badge-secondary ml-1">CM</span>
         </label>
@@ -73,6 +45,34 @@
                 <button class="btn btn-outline-danger clear" type="button" id="h-button-add">清空</button>
             </div>
         </div>
+
+        <label for="h" class="mt-3">
+            <span class="badge badge-primary">性别</span>
+        </label>
+        <div class="input-group">
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="sex1" name="sex" class="custom-control-input" value="1">
+                <label class="custom-control-label" for="sex1">男</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="sex2" name="sex" class="custom-control-input" value="0">
+                <label class="custom-control-label" for="sex2">女</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="sex3" name="sex" class="custom-control-input" value="2">
+                <label class="custom-control-label" for="sex3">保密</label>
+            </div>
+        </div>
+
+        <!-- 提示 -->
+        <div class="alert alert-warning alert-dismissible fade show mt-4" role="alert">
+            <i class="icon ion-md-information-circle-outline mr-2"></i>
+            输入身高与体重，点击<strong>开始计算</strong>即可计算身体质量指数，请放心，应该没我胖。
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <!-- end 提示 -->
 
         <!-- 提交 -->
         <div class="d-flex justify-content-center">
