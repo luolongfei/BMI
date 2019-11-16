@@ -3,7 +3,6 @@
 @push ('css')
     <style>
         .bmi-tr {
-            color: #fff;
             font-weight: 600;
         }
     </style>
@@ -21,11 +20,18 @@
         </div>
     </div>
 
-    {{--<div class="container text-center">
-        <img src="https://q2.qlogo.cn/headimg_dl?dst_uin=593198779&spec=100" alt="查价喵" class="rounded-circle mt-5"
-             id="qq-avatar">
-    </div>--}}
-    <div class="container" style="margin-top: 92px;">
+    <div class="container text-center mt-5 pt-5">
+        <!-- 提示 -->
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <i class="icon ion-md-information-circle-outline mr-2"></i>
+            输入身高与体重，点击<strong>开始计算</strong>即可计算身体质量指数，请放心，应该没我胖。
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <!-- end 提示 -->
+    </div>
+    <div class="container">
         <label for="h" class="mt-2">
             <span class="badge badge-primary">身高</span><span class="badge badge-pill badge-secondary ml-1">CM</span>
         </label>
@@ -64,19 +70,9 @@
             </div>
         </div>
 
-        <!-- 提示 -->
-        <div class="alert alert-warning alert-dismissible fade show mt-4" role="alert">
-            <i class="icon ion-md-information-circle-outline mr-2"></i>
-            输入身高与体重，点击<strong>开始计算</strong>即可计算身体质量指数，请放心，应该没我胖。
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <!-- end 提示 -->
-
         <!-- 提交 -->
-        <div class="d-flex justify-content-center">
-            <div class="mt-2 py-4 px-5" id="loader" style="display: none; background-color: #7cd1f9; width: 100%">
+        <div class="d-flex justify-content-center mt-4">
+            <div class="py-4 px-5" id="loader" style="display: none; background-color: #7cd1f9; width: 100%">
                 <div class="loader-inner pacman"></div>
             </div>
         </div>
@@ -89,7 +85,7 @@
         <div class="pt-5">
             <span class="badge badge-pill badge-secondary">规则说明</span>
         </div>
-        <table class="table table-hover mt-2">
+        <table class="table table-hover mt-2 table-striped">
             <thead>
             <tr>
                 <th scope="col">分类</th>
@@ -97,27 +93,27 @@
             </tr>
             </thead>
             <tbody>
-            <tr style="background-color: #999999;" class="bmi-tr">
+            <tr class="bmi-tr">
                 <td>过轻</td>
                 <td>BMI < 18.5</td>
             </tr>
-            <tr style="background-color: #99CC33;" class="bmi-tr">
+            <tr class="bmi-tr">
                 <td>标准身材</td>
                 <td>18.5 <= BMI < 24</td>
             </tr>
-            <tr style="background-color: #FFCC00;" class="bmi-tr">
+            <tr class="bmi-tr">
                 <td>过重</td>
                 <td>24 <= BMI < 27</td>
             </tr>
-            <tr style="background-color: #FF9900;" class="bmi-tr">
+            <tr class="bmi-tr">
                 <td>轻度肥胖</td>
                 <td>27 <= BMI < 30</td>
             </tr>
-            <tr style="background-color: #990033;" class="bmi-tr">
+            <tr class="bmi-tr">
                 <td>中度肥胖</td>
                 <td>30 <= BMI < 35</td>
             </tr>
-            <tr style="background-color: #f83823;" class="bmi-tr">
+            <tr class="bmi-tr">
                 <td>重度肥胖</td>
                 <td>BMI >= 35</td>
             </tr>
